@@ -4,7 +4,7 @@ import { useState } from 'react';
  * LandingPage Component
  * Premium full-screen landing page with two-column layout
  */
-function LandingPage({ onStartStream, user, onLogout }) {
+function LandingPage({ onStartStream, user, onLogout, onLogin }) {
     const [rtspUrl, setRtspUrl] = useState('');
     const [useWebcam, setUseWebcam] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -48,20 +48,26 @@ function LandingPage({ onStartStream, user, onLogout }) {
                     </div>
                     <span className="topbar-brand">StreamOverlay</span>
                 </div>
-                {user && (
-                    <div className="topbar-right">
-                        <div className="topbar-user">
-                            <span className="topbar-avatar">{user.email?.charAt(0).toUpperCase()}</span>
-                            <span className="topbar-email">{user.email}</span>
-                        </div>
-                        <button onClick={onLogout} className="topbar-logout">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
-                            </svg>
-                            Logout
+                <div className="topbar-right">
+                    {user ? (
+                        <>
+                            <div className="topbar-user">
+                                <span className="topbar-avatar">{user.email?.charAt(0).toUpperCase()}</span>
+                                <span className="topbar-email">{user.email}</span>
+                            </div>
+                            <button onClick={onLogout} className="topbar-logout">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
+                                </svg>
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <button onClick={onLogin} className="topbar-login">
+                            Login
                         </button>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
             {/* Two Column Layout */}

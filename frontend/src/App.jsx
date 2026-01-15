@@ -20,7 +20,7 @@ function MainApp() {
   const [overlays, setOverlays] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [authView, setAuthView] = useState('login');
+  const [authView, setAuthView] = useState('landing');
   const [streamActive, setStreamActive] = useState(false);
   const [currentSource, setCurrentSource] = useState('');
 
@@ -107,6 +107,14 @@ function MainApp() {
 
   // Show auth screens if not logged in
   if (!isAuthenticated) {
+    if (authView === 'landing') {
+      return (
+        <LandingPage
+          onLogin={() => setAuthView('login')}
+          onStartStream={() => setAuthView('login')}
+        />
+      );
+    }
     if (authView === 'login') {
       return <Login onSwitchToRegister={() => setAuthView('register')} />;
     }

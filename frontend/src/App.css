@@ -191,6 +191,25 @@ body {
   height: 16px;
 }
 
+.topbar-login {
+  padding: 0.5rem 1.5rem;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.topbar-login:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px var(--primary-glow);
+}
+
 @media (max-width: 640px) {
   .topbar-email {
     display: none;
