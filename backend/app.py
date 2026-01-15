@@ -3,7 +3,7 @@ RTSP Livestream Overlay - Flask Backend
 Handles video streaming (MJPEG), overlay CRUD, and JWT authentication.
 """
 
-import cv2
+import cv2 # type: ignore
 from flask import Flask, Response, request, jsonify, g, send_from_directory
 from flask_cors import CORS
 from bson import ObjectId
